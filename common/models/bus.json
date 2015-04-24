@@ -1,0 +1,55 @@
+{
+  "name": "Bus",
+  "plural": "Buses",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "model": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "passengers": {
+      "type": "hasMany",
+      "model": "Passenger",
+      "foreignKey": "passengerId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "property": "findById",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "property": "findById",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__get__passengers"
+    }
+  ],
+  "methods": []
+}

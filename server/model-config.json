@@ -25,5 +25,13 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Bus": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Passenger": {
+    "dataSource": "db",
+    "public": true
   }
 }
